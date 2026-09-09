@@ -1,0 +1,428 @@
+/* Nimora — AI Chat & Roleplay
+   Standalone dark system, decoupled from the corporate site theme.
+   Locked to dark: the app's own product identity (icon, screenshots) is dark/moody,
+   so this page commits to one mode rather than a light/dark split. */
+
+:root {
+  --bg: #140f1b;
+  --bg-alt: #1b1424;
+  --bg-raised: #231a2e;
+  --text: #f3eef8;
+  --text-muted: #a99cba;
+  --accent: #a879f2;
+  --accent-strong: #7c4fd9;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-soft: rgba(255, 255, 255, 0.05);
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Bars (header + footer) */
+.bar {
+  padding: 1.25rem 0;
+}
+
+.bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.bar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.bar-link:hover {
+  color: var(--text);
+}
+
+/* Hero */
+.hero {
+  padding: clamp(2rem, 6vw, 5rem) 0 clamp(3rem, 8vw, 6rem);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.1rem;
+  max-width: 20ch;
+}
+
+.hero-desc {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  max-width: 42ch;
+  margin: 0 0 2rem;
+}
+
+/* Play badge (shared: hero + final CTA) */
+.play-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--text);
+  color: #140f1b;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.play-badge:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.play-badge:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.play-badge span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.0625rem;
+}
+
+.play-badge em {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+/* Hero visual: abstract mark + floating conversation bubbles + glow
+   (no screenshot needed — a brand mark surrounded by drifting bubble
+   shapes stands in for "conversation" without faking a product UI). */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+}
+
+.glow {
+  position: absolute;
+  inset: -15%;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 35% 25%, rgba(168, 121, 242, 0.35), transparent 55%),
+    radial-gradient(circle at 70% 75%, rgba(124, 79, 217, 0.28), transparent 55%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.orbit {
+  position: relative;
+  z-index: 1;
+  width: min(320px, 78vw);
+  aspect-ratio: 1;
+}
+
+.app-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 92px;
+  height: 92px;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-card);
+  background: linear-gradient(150deg, var(--accent) 0%, var(--accent-strong) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 40px rgba(124, 79, 217, 0.4);
+}
+
+.app-mark-n {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.25rem;
+  color: var(--text);
+}
+
+.bubble {
+  position: absolute;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  backdrop-filter: blur(6px);
+  animation: drift 7s ease-in-out infinite;
+}
+
+.bubble--a {
+  width: 84px;
+  height: 40px;
+  top: 8%;
+  left: 4%;
+  border-bottom-left-radius: 6px;
+  animation-delay: 0s;
+}
+
+.bubble--b {
+  width: 64px;
+  height: 64px;
+  bottom: 12%;
+  right: 2%;
+  border-bottom-right-radius: 6px;
+  animation-delay: 1.4s;
+}
+
+.bubble--c {
+  width: 52px;
+  height: 32px;
+  bottom: 4%;
+  left: 14%;
+  border-bottom-left-radius: 6px;
+  animation-delay: 2.8s;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble {
+    animation: none;
+  }
+}
+
+/* Stats strip */
+.stats {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.stat-label {
+  margin: 0.2rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+}
+
+/* Features bento */
+.features {
+  padding: clamp(3rem, 7vw, 5.5rem) 0;
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.25rem;
+}
+
+.bento-cell {
+  padding: 1.75rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+
+.bento-cell--large {
+  grid-column: span 2;
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 260px;
+}
+
+.bento-cell--tint {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(168, 121, 242, 0.25), transparent 60%),
+    var(--bg-raised);
+}
+
+.bento-cell h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.bento-cell p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  max-width: 42ch;
+}
+
+/* Final CTA */
+.final-cta {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+.final-cta-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.final-cta-inner h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--border-soft);
+}
+
+/* Scroll reveal (progressive enhancement, see app.js) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .play-badge {
+    transition: none;
+  }
+}
+
+/* Mobile collapse */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .hero-copy {
+    text-align: left;
+  }
+
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-cell--large {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 0;
+  }
+
+  .stats-row {
+    gap: 1.5rem;
+  }
+}
