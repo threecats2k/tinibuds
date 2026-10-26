@@ -2987,3 +2987,5 @@ adorphic.com, 4067, RESELLER
 vistars.ai, d7njl5dbhjes73cnd8tg, RESELLER
 gravite.net, c6f2f6708dc1f6e2ae1165c0a861b3b0, RESELLER
 openx.com, 564879531, RESELLER, 6a698e2ec38604c6
+#update 26/10/2026
+bigo.sg,ys6x9p09nl,DIRECT
