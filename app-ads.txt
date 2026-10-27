@@ -3409,3 +3409,6 @@ pubmatic.com, 163754, RESELLER, 5d62403b186f2ace
 smartadserver.com, 4721-OB, RESELLER, 060d053dcf45cbf3
 mobupps.com, c74d97b01eae257e44aa9d5bade97baf5001, RESELLER
 themediagrid.com,IRK975,RESELLER,35d5010d7789b49d
+#update 27/10/2026
+bigo.sg, qyfoptvec9, RESELLER
+video.unrulymedia.com, 841707281, RESELLER, 98c21ef9a666c68b
