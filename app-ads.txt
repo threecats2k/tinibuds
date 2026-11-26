@@ -3548,3 +3548,9 @@ tubia.com, 40125, RESELLER
 vidazoo.com, 6ab4e4454da99de3c4d515c9, RESELLER, b6ada874b4d7d0b2
 #update 24/11/2026
 sharethrough.com, SniqCOMC, RESELLER, d53b998a7bd4ecd2
+#update 26/11/2026
+rubiconproject.com, 27945, RESELLER, 0bfd66d529a55807
+smaato.com, 1100060389, RESELLER, 07bcf65f187117b4
+adingo.jp, 34964, RESELLER
+pubnative.net, 1018439, RESELLER, d641df8625486a7b
+smaato.com, 1100060686, RESELLER, 07bcf65f187117b4
